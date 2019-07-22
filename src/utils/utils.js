@@ -10,8 +10,6 @@ export function loadImage(obj) {
         // set height and width equal to image
         _this.canvas.width = _this.imageObj.naturalWidth;
         _this.canvas.height = _this.imageObj.naturalHeight;
-        // _this.canvas.width = 800;
-        // _this.canvas.height = 600;
         _this.baseCtx.drawImage(_this.imageObj, 0, 0);
 
         // change height and width of overlay canvas same as base canvas
@@ -48,9 +46,9 @@ export function drawRect(obj, dragPoints) {
     obj.ctx.save();
     obj.ctx.beginPath();
     obj.ctx.rect(left, top, width, height);
-    obj.ctx.setLineDash([3]); // Make borders dashed
+    obj.ctx.setLineDash([4]); // Make borders dashed
     obj.ctx.strokeStyle = CONFIG.LINECOLOR; // Green color
-    obj.ctx.lineWidth = 2; // line size
+    obj.ctx.lineWidth = 1; // line size
     obj.ctx.stroke(); // draw
     obj.ctx.restore();
 
@@ -74,7 +72,7 @@ export function drawDragPoints(ctx, dragPoints) {
 
 export function bringImageUp(obj, dragPoints) {
     const { left, top, width, height } = dragPoints;
-    obj.ctx.globalAlpha = 1;
+    obj.globalAlpha = 1;
     obj.ctx.drawImage(obj.imageObj, left, top, width, height, left, top, width, height);
 }
 
@@ -129,6 +127,16 @@ export function getDragPoints(dragPoints) {
             tr: { left: (left + width) - boxSize / 2, top: (top - boxSize) + boxSize / 2, width: boxSize, height: boxSize },
         }
     }
+}
+
+export function changeCursor(obj) {
+    let { box, point } = obj.currentBox;
+    if (box !== -1 && point !== 'inside') {
+        obj.overlay.style.cursor = CONFIG.MOUSE_ARR[point];
+    } else if (box !== -1 && point === 'inside') {
+        obj.overlay.style.cursor = "move";
+    } else
+        obj.overlay.style.cursor = "initial";
 }
 
 // export function onMouseUp() {

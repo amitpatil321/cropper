@@ -16,17 +16,17 @@ function App() {
           This is header!
         </Header>
         <Layout>
-          <Sider width={100} style={{ background: '#fff' }}>
+          {/* <Sider width={100} style={{ background: '#fff' }}>
             Sidebar
-          </Sider>
+          </Sider> */}
           <Layout style={{ padding: '0 24px 24px' }}>
             <Content className='content'>
               <Cropper />
             </Content>
           </Layout>
-          <Sider width={200} style={{ background: '#fff' }}>
+          {/* <Sider width={200} style={{ background: '#fff' }}>
             Sidebar
-          </Sider>
+          </Sider> */}
         </Layout>
       </Layout>
     </div>
