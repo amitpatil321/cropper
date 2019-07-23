@@ -5,6 +5,9 @@ import './cropper.css';
 
 export default class Cropper extends Component {
     rectangles = [];
+    state = {
+        rectangles : []
+    }
     componentDidMount() {
         document.querySelector('#overlay').addEventListener('mousedown', this.onMouseDown);
         document.querySelector('#overlay').addEventListener('mousemove', this.onMouseMove);
@@ -21,6 +24,15 @@ export default class Cropper extends Component {
         document.querySelector('#overlay').removeEventListener('mousedown', this.onMouseDown);
         document.querySelector('#overlay').removeEventListener('mousemove', this.onMouseMove);
         document.querySelector('#overlay').removeEventListener('mouseup', this.onMouseUp);
+    }
+
+    shouldComponentUpdate() {
+        if (this.props.rectangles.length) {
+            this.rectangles = this.props.rectangles;
+            clear(this);
+            reDrawAll(this);
+        }
+        return true;
     }
 
     onMouseDown = (event) => {
@@ -117,6 +129,8 @@ export default class Cropper extends Component {
                 reDrawAll(this);
             }
         }
+
+        if (this.mouseDown || this.boxDragging || this.resizing)
         reDrawAll(this);
 
         // Change cursor
@@ -126,7 +140,13 @@ export default class Cropper extends Component {
 
     onMouseUp = (event) => {
         if (this.mouseDown) {
-            this.rectangles.push({ cords: this.dragPoints, dragPoints: getDragPoints(this.dragPoints) });
+            this.rectangles.push({
+                cords: this.dragPoints,
+                dragPoints: getDragPoints(this.dragPoints),
+                show: true
+            });
+            // this.props.rectAdded(this.rectangles)
+            this.props.rectAdded(this.rectangles);
         }
         this.mouseDown = false;
         this.boxDragging = false;

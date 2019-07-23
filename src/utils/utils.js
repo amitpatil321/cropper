@@ -1,8 +1,6 @@
 import * as CONFIG from '../utils/config';
 export function loadImage(obj) {
     obj.imageObj = new Image();
-    obj.imageObj.style.height = '500';
-    obj.imageObj.style.width = '500';
     obj.imageObj.src = './pic.jpg';
 
     let _this = obj;
@@ -41,33 +39,36 @@ export function clear(obj) {
     obj.ctx.fillRect(0, 0, obj.canvas.width, obj.canvas.height);
 }
 
-export function drawRect(obj, dragPoints) {
-    let { left, top, width, height } = dragPoints;
-    obj.ctx.save();
-    obj.ctx.beginPath();
-    obj.ctx.rect(left, top, width, height);
-    obj.ctx.setLineDash([4]); // Make borders dashed
-    obj.ctx.strokeStyle = CONFIG.LINECOLOR; // Green color
-    obj.ctx.lineWidth = 1; // line size
-    obj.ctx.stroke(); // draw
-    obj.ctx.restore();
+export function drawRect(obj, dragPoints, show = true) {
+    if (show) {
+        let { left, top, width, height } = dragPoints;
+        obj.ctx.save();
+        obj.ctx.beginPath();
+        obj.ctx.rect(left, top, width, height);
+        obj.ctx.setLineDash([4]); // Make borders dashed
+        obj.ctx.strokeStyle = CONFIG.LINECOLOR; // Green color
+        obj.ctx.lineWidth = 1; // line size
+        obj.ctx.stroke(); // draw
+        obj.ctx.restore();
 
-    // Bring image up
-    bringImageUp(obj, dragPoints);
+        // Bring image up
+        bringImageUp(obj, dragPoints);
 
-    // Draw drag points on rectangle
-    drawDragPoints(obj.ctx, dragPoints);
+        // Draw drag points on rectangle
+        drawDragPoints(obj, dragPoints);
+    }
 }
 
-
-export function drawDragPoints(ctx, dragPoints) {
+export function drawDragPoints(obj, dragPoints) {
     // Draw corner points
-    ctx.strokeStyle = CONFIG.LINECOLOR;
+    obj.ctx.strokeStyle = CONFIG.LINECOLOR;
     let { tl, bl, br, tr } = getDragPoints(dragPoints);
-    ctx.strokeRect(tl.left, tl.top, tl.width, tl.height); //TL
-    ctx.strokeRect(bl.left, bl.top, bl.width, bl.height); //BL
-    ctx.strokeRect(br.left, br.top, br.width, br.height); //BR
-    ctx.strokeRect(tr.left, tr.top, tr.width, tr.height); //TR
+    // obj.ctx.strokeRect(tl.left + CONFIG.DRAG_RECT_SIZE, tl.top - 5, 30, 10); //Label
+
+    obj.ctx.strokeRect(tl.left, tl.top, tl.width, tl.height); //TL
+    obj.ctx.strokeRect(bl.left, bl.top, bl.width, bl.height); //BL
+    obj.ctx.strokeRect(br.left, br.top, br.width, br.height); //BR
+    obj.ctx.strokeRect(tr.left, tr.top, tr.width, tr.height); //TR
 }
 
 export function bringImageUp(obj, dragPoints) {
@@ -107,12 +108,12 @@ export function alreadyOccupied(obj, event) {
             }
         }
     }
-    return { box: -1, point: 'outside' };;
+    return { box: -1, point: 'outside' };
 }
 
 export function reDrawAll(obj) {
     obj.rectangles.forEach((each, index) => {
-        drawRect(obj, each.cords);
+        drawRect(obj, each.cords, each.show);
     });
 }
 
@@ -137,6 +138,16 @@ export function changeCursor(obj) {
         obj.overlay.style.cursor = "move";
     } else
         obj.overlay.style.cursor = "initial";
+}
+
+export function uniqueId() {
+    var ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var ID_LENGTH = 6;
+    var rtn = '';
+    for (var i = 0; i < ID_LENGTH; i++) {
+        rtn += ALPHABET.charAt(Math.floor(Math.random() * ALPHABET.length));
+    }
+    return rtn;
 }
 
 // export function onMouseUp() {
