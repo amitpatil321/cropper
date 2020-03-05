@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/amitpatil321/cropper/static/css/main.a1aec5d5.chunk.css",
-    "main.js": "/amitpatil321/cropper/static/js/main.226e3e63.chunk.js",
-    "main.js.map": "/amitpatil321/cropper/static/js/main.226e3e63.chunk.js.map",
-    "runtime~main.js": "/amitpatil321/cropper/static/js/runtime~main.bb1c196a.js",
-    "runtime~main.js.map": "/amitpatil321/cropper/static/js/runtime~main.bb1c196a.js.map",
-    "static/css/2.676dc204.chunk.css": "/amitpatil321/cropper/static/css/2.676dc204.chunk.css",
-    "static/js/2.1647866a.chunk.js": "/amitpatil321/cropper/static/js/2.1647866a.chunk.js",
-    "static/js/2.1647866a.chunk.js.map": "/amitpatil321/cropper/static/js/2.1647866a.chunk.js.map",
-    "index.html": "/amitpatil321/cropper/index.html",
-    "precache-manifest.16d96bd35dee2b8f512c5c0c7c084a58.js": "/amitpatil321/cropper/precache-manifest.16d96bd35dee2b8f512c5c0c7c084a58.js",
-    "service-worker.js": "/amitpatil321/cropper/service-worker.js",
-    "static/css/2.676dc204.chunk.css.map": "/amitpatil321/cropper/static/css/2.676dc204.chunk.css.map",
-    "static/css/main.a1aec5d5.chunk.css.map": "/amitpatil321/cropper/static/css/main.a1aec5d5.chunk.css.map"
+    "main.css": "/cropper/static/css/main.a1aec5d5.chunk.css",
+    "main.js": "/cropper/static/js/main.c4132306.chunk.js",
+    "main.js.map": "/cropper/static/js/main.c4132306.chunk.js.map",
+    "runtime~main.js": "/cropper/static/js/runtime~main.c4b8691d.js",
+    "runtime~main.js.map": "/cropper/static/js/runtime~main.c4b8691d.js.map",
+    "static/css/2.676dc204.chunk.css": "/cropper/static/css/2.676dc204.chunk.css",
+    "static/js/2.41f8a195.chunk.js": "/cropper/static/js/2.41f8a195.chunk.js",
+    "static/js/2.41f8a195.chunk.js.map": "/cropper/static/js/2.41f8a195.chunk.js.map",
+    "index.html": "/cropper/index.html",
+    "precache-manifest.b2ff60624aa46e6fef88d02074874e7c.js": "/cropper/precache-manifest.b2ff60624aa46e6fef88d02074874e7c.js",
+    "service-worker.js": "/cropper/service-worker.js",
+    "static/css/2.676dc204.chunk.css.map": "/cropper/static/css/2.676dc204.chunk.css.map",
+    "static/css/main.a1aec5d5.chunk.css.map": "/cropper/static/css/main.a1aec5d5.chunk.css.map"
   }
 }
